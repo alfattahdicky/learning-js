@@ -1,3 +1,3 @@
 # Learning JS
 
-## Lesson 1 : Syntax Basic & Types
+### Lesson 1 : Syntax Basic & Types
