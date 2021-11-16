@@ -102,6 +102,7 @@ console.log(book); // JS ES12
   - Cannot be Redeclared
   - Must be declared before use
   - Have Block Scope => variables declared inside a { } block cannot be accessed from outside the block
+  - Let also hoisted to the top of the block but not initialized, before declare will result referenceError
 */
 
 // Cannot be Redeclared
@@ -122,8 +123,95 @@ let totalCar = 10;
 }
 console.log(totalCar); // 10f
 
-// Let also hoisted to the top of the block but not initialized
-// Before declare will result referenceError
+// Cannot Hoisted
 totalBooks = 20;
 // let totalBooks = 30;
 // console.log(totalBooks);
+
+/**
+  Using Const
+  - cannot be redeclared, get error assignment to constatn variable
+  - cannot be reassigned 
+    * For Object and Arrays
+      - keyword const it defines a constant reference to a value
+      - like change element and property, NOT Reassign value, array and object
+  - have block scope 
+    - not the same declare outside the block
+    - redeclare another scope is allowed
+    - redeclare with var or let is not allowed if var or let write first statement
+  - when use variable const 
+    - cannot value change
+    - declare to new array, new object, new function, new Regexp
+  - cannot hoisted same behaviour variable let
+ */
+
+// Cannot be redeclared
+const nameCity = "Jakarta";
+// nameCity = "Bandung";
+// console.log(nameCity);
+
+// Must be Assign when they are declare
+// Correct
+const nameCity1 = "Bandung";
+// Incorrect => get error
+// const nameCity1;
+// nameCity1 = 'Bandung';
+
+// Constant array
+// Correct
+const arr = ["dicky", "azka", "diaz"];
+arr[0] = "al"; // change value index 0
+arr.push("vera"); // add value
+console.log(arr); // [ 'al', 'azka', 'diaz', 'vera' ]
+// InCorrect
+// const arr1 = ["dicky", "vera", "diaz"];
+// arr1 = ["azka", "dicky", "vera"];
+
+// Constant object
+const obj = {
+  type: "Mclaren",
+  year: "2021",
+  color: "blue",
+};
+obj.color = "white"; // change color
+obj.owner = "Dicky"; // add owner
+// console.log(obj); // { type: 'Mclaren', year: '2021', color: 'white', owner: 'Dicky' }
+
+// Block Scope
+// redeclare a variable with const in another scope is allowed
+const y = 100; // allowed
+{
+  const y = 3; // allowed
+}
+// console.log(y); // 100
+
+// redeclare with existing var or let is not allowed in same scope
+// var twenty = 20; // allowed
+// const twenty = 20; // not allowed
+// {
+//   let twenty = 20; // allowed
+//   const twenty = 20; // not allowed
+// }
+// {
+//   const twenty = 20; // allowed
+//   const twenty = 20; // not allowed
+// }
+
+// redeclare with existing const is not allowed in same scope
+// const twenty = 20; // allowed
+// twenty = 20; // not allowed
+// var twenty = 20; // not allowed
+// let twenty = 20; // not allowed
+// const twenty = 20; // not allowed
+
+// {
+//   const twenty = 20; // allowed
+//   twenty = 20; // not allowed
+//   var twenty = 20; // not allowed
+//   let twenty = 20; // not allowed
+//   const twenty = 20; // not allowed
+// }
+
+// Const Hosting
+// console.log(carType); // get error
+// const carType = "Toyota";
