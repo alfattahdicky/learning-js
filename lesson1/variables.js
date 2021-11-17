@@ -121,7 +121,7 @@ let totalCar = 10;
 {
   let totalCar = 2;
 }
-console.log(totalCar); // 10f
+console.log(totalCar); // 10
 
 // Cannot Hoisted
 totalBooks = 20;
